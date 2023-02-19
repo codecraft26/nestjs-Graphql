@@ -1,10 +1,9 @@
 import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { BookModule } from './book/book.module';
+import { AppResolver } from './app.resolver';
 
 @Module({
   imports: [
@@ -19,9 +18,12 @@ autoSchemaFile:join(process.cwd(),"src/schema.graphql")
 path:join(process.cwd(),'src/graphql.ts')
         }
     }),
-    BookModule
+
+
+   
+   
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [AppResolver],
 })
 export class AppModule {}
